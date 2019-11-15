@@ -119,7 +119,27 @@ namespace Laboratorio_9_OOP_201920
                     }
 
                     break;
-                
+                //dejar para despues spy
+                //case EnumEffect.spy:
+
+                case EnumEffect.tightBond:
+                    //repetir el proceso 2 veces
+                    for (int i = 0; i < 2; i = i + 1)
+                    {
+                        EnumType type = playedCard.Type; // no es como enumtupe line in lines
+                        if (board.PlayerCards[activePlayer.Id].ContainsKey(type))
+                        {
+                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][type])
+                            {
+                                if (card.Name == playedCard.Name) card.AttackPoints = card.AttackPoints * 2;
+                            }
+                        }
+                    }
+
+                    break;
+
+
+
             }
         }
         
