@@ -87,8 +87,37 @@ namespace Laboratorio_9_OOP_201920
 
                     }
                     break;
-           
-                default:
+                
+                case EnumEffect.buff:
+
+                    foreach (EnumType type in buffLines)
+                    {
+                        if (board.PlayerCards[activePlayer.Id].ContainsKey(type))
+                        {
+                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][type])
+                            {
+                                if (!card.Hero) card.AttackPoints = card.AttackPoints * 2;
+                            }
+                        }
+                    }
+
+                  //default:
+                    break;
+
+                case EnumEffect.moraleBoost:
+
+                    foreach (EnumType type in lines)
+                    {
+                        if (board.PlayerCards[activePlayer.Id].ContainsKey(type))
+                        {
+                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][type])
+                            {
+                                if (!card.Hero && card.Name != playedCard.Name) card.AttackPoints = card.AttackPoints + 1;
+
+                            }
+                        }
+                    }
+
                     break;
                 
             }
